@@ -35,7 +35,7 @@ class ObjectViewedManager(models.Manager):
 class ObjectViewed(models.Model):
     user                = models.ForeignKey(User, blank=True, null=True) # User instance instance.id
     ip_address          = models.CharField(max_length=220, blank=True, null=True) #IP Field
-    content_type        = models.ForeignKey(ContentType) # User, Product, Order, Cart, Address
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE) # User, Product, Order, Cart, Address
     object_id           = models.PositiveIntegerField() # User id, Product id, Order id,
     content_object      = GenericForeignKey('content_type', 'object_id') # Product instance
     timestamp           = models.DateTimeField(auto_now_add=True)
